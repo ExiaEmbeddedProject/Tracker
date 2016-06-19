@@ -4,7 +4,10 @@
   "description": "SIG Tracker linked with Analyst",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "postinstall": "install-app-deps",
+    "pack": "build --target dir",
+    "dist": "build"
   },
   "repository": {
     "type": "git",
@@ -13,6 +16,11 @@
   "author": "Unicorn3D",
   "license": "MIT",
   "devDependencies": {
+    "electron-builder": "^5.4.2",
     "electron-prebuilt": "^1.2.0"
+  },
+  "build": {
+    "app-bundle-id": "Unicorn3D.Tracker",
+    "app-category-type": "public.app-category.productivity"
   }
 }
