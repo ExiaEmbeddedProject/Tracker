@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.hidden{
+  display: none;
+}
+#map{
+  z-index: 10;
+}
+#map-hover{
+  z-index: 20;
+  background: white;
+  position: absolute;
+  top:0px;left:0px;
+  opacity: 0.6;
+  text-align: center;
+  padding-top: 10%;
+}
+#map-hover + img{
+
+}
+#map, #map-hover {
+  height: 100%;
+  width: 100%;
+}

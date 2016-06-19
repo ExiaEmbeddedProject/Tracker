@@ -2,16 +2,17 @@
 const electron = require('electron');
 
 const holder = document.getElementById(TrackerGoogleMap.defaultMapName());
+const hover = document.getElementById(TrackerGoogleMap.defaultMapName() + "-hover");
 
 holder.ondragover = () => {
-    return false;
+    hover.className = "";
 };
 
-holder.ondragleave = holder.ondragend = () => {
-    return false;
+hover.ondragleave = holder.ondragend = () => {
+    hover.className = "hidden";
 };
 
-holder.ondrop = (e) => {
+hover.ondrop = (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     console.log('File you dragged is ', file.path);
@@ -20,4 +21,3 @@ holder.ondrop = (e) => {
     });
     return false;
 };
-
