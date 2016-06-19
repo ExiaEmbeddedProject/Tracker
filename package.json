@@ -20,7 +20,10 @@
     "electron-prebuilt": "^1.2.0"
   },
   "build": {
-    "app-bundle-id": "Unicorn3D.Tracker",
-    "app-category-type": "public.app-category.productivity"
+    "appId": "Unicorn3D.Tracker",
+    "app-category-type": "public.app-category.productivity",
+    "win": {
+      "iconUrl": "https://raw.githubusercontent.com/Unicorn3D/Tracker/master/build/icon.ico"
+    }
   }
 }
