@@ -1,12 +1,9 @@
-'use strict'
-
 var defaultMapName = "map";
 var map;
 
-var TrackerGoogleMap = function() {
-};
+var TrackerGoogleMap = function() {};
 
-TrackerGoogleMap.defaultMapName = function(){
+TrackerGoogleMap.defaultMapName = function() {
     return defaultMapName;
 };
 
@@ -17,7 +14,7 @@ TrackerGoogleMap.initMap = function() {
     });
 };
 
-TrackerGoogleMap.markCoordinates= function(lat, lng, title){
+TrackerGoogleMap.markCoordinates = function(lat, lng, title) {
     return new google.maps.Marker({
         position: {lat: lat, lng: lng},
         map: map,
@@ -25,11 +22,11 @@ TrackerGoogleMap.markCoordinates= function(lat, lng, title){
     });
 };
 
-TrackerGoogleMap.mark= function(point, title){
+TrackerGoogleMap.mark = function(point, title) {
     return markCoordinates(point.lat, point.lng, title);
 };
 
-TrackerGoogleMap.createPathFromFile= function(points){
+TrackerGoogleMap.createPathFromFile = function(points) {
     var flightPath = new google.maps.Polyline({
         path: points,
         geodesic: true,
@@ -42,9 +39,9 @@ TrackerGoogleMap.createPathFromFile= function(points){
 };
 
 //use this function if you aren't sure about your json content.
-TrackerGoogleMap.extractLatLon= function(jsonArray){
+TrackerGoogleMap.extractLatLon = function(jsonArray) {
     var result = [];
-    jsonArray.forEach(function(el){
+    jsonArray.forEach(function(el) {
         if (el.lat && el.lng){
             result.push(el);
         }

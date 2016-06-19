@@ -1,8 +1,4 @@
-'use strict'
-
-
-var TrackerJSON = function(){
-};
+var TrackerJSON = function() {};
 
 TrackerJSON.loadJSON = function(path, callback) {
     var xobj = new XMLHttpRequest();
