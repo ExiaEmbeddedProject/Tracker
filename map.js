@@ -1,26 +1,30 @@
+'use strict'
+
+var remote = require('electron').remote;
+var args = remote.getGlobal('args');
+
 var map;
-var marker;
 
 navigator.geolocation.getCurrentPosition(geoSuccess);
 
 function geoSuccess(position){
-    lat = position.coords.latitude;
-    lng = position.coords.longitude;
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: lat, lng: lng},
-        zoom: 8
+        zoom: 18
     });
 
-    marker = new google.maps.Marker({
-        position: map.getCenter(),
-        map: map,
-        draggable: true
-    });
+    if(args[2]){
+        TrackerJSON.loadJSON(args[2], function(objects){
+            TrackerGoogleMap.createPathFromFile(objects);
+        });
+    }
 }
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 19, lng: 72},
-        zoom: 3
-    });
+    TrackerGoogleMap.initMap();
 }
+
+
+

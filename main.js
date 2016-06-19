@@ -4,6 +4,9 @@ const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow; // GC protection
 
+global.args = process.argv;
+
+
 function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600});
   mainWindow.loadURL(`file://${__dirname}/index.html`);
