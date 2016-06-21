@@ -15,7 +15,7 @@ function geoSuccess(position) {
 
     if(args[2]) {
         TrackerJSON.loadJSON(args[2], function(objects) {
-            TrackerGoogleMap.createPathFromFile(objects);
+            TrackerGoogleMap.createRichPathFromObject(objects);
         });
     }
 }

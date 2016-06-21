@@ -17,7 +17,7 @@ hover.ondrop = (e) => {
     const file = e.dataTransfer.files[0];
     console.log('File you dragged is ', file.path);
     TrackerJSON.loadJSON(file.path, function(objects){
-        TrackerGoogleMap.createPathFromFile(objects);
+        TrackerGoogleMap.createRichPathFromObject(objects);
     });
     return false;
 };

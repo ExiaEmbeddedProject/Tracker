@@ -26,7 +26,27 @@ TrackerGoogleMap.mark = function(point, title) {
     return markCoordinates(point.lat, point.lng, title);
 };
 
-TrackerGoogleMap.createPathFromFile = function(points) {
+TrackerGoogleMap.createMarkedPointsFromObject = function(object)
+{
+    var markedPoints = [];
+    for(var i = 0; i < object.length; i++)
+    {
+        markedPoints.push(TrackerGoogleMap.markCoordinates(object[i].lat, object[i].lng, object[i].title));
+    }
+
+    return markedPoints;
+};
+
+TrackerGoogleMap.createRichPathFromObject = function(objects)
+{
+    if(objects.path != undefined)
+        this.createPathFromObject(objects.path);
+    if(objects.markedPoints != undefined)
+        this.createMarkedPointsFromObject(objects.markedPoints);
+};
+
+TrackerGoogleMap.createPathFromObject = function(points) {
+    console.log(points);
     var flightPath = new google.maps.Polyline({
         path: points,
         geodesic: true,
