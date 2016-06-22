@@ -531,8 +531,8 @@
     {"lat":50.296325, "lng":2.733913}
   ],
   "markedPoints": [
-    {"lat":50.296230, "lng":2.734113, "title":"tagada"},
-    {"lat":50.295955, "lng":2.734763, "title":"tagada"},
-    {"lat":50.296325, "lng":2.733913, "title":"tagada"}
+    {"lat":50.296230, "lng":2.734113, "title":"tagada", "info": "This description display information about the point."},
+    {"lat":50.295955, "lng":2.734763, "title":"tagada" ,"info": "This description display information about the point."},
+    {"lat":50.296325, "lng":2.733913, "title":"tagada", "info": "This description display information about the point."}
   ]
 }

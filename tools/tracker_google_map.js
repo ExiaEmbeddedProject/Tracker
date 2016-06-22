@@ -1,6 +1,6 @@
 var defaultMapName = "map";
 var map;
-
+var infowindows = [];
 var TrackerGoogleMap = function() {};
 
 TrackerGoogleMap.defaultMapName = function() {
@@ -14,16 +14,28 @@ TrackerGoogleMap.initMap = function() {
     });
 };
 
-TrackerGoogleMap.markCoordinates = function(lat, lng, title) {
-    return new google.maps.Marker({
+TrackerGoogleMap.markCoordinates = function(lat, lng, title, contentString) {
+    var marker = new google.maps.Marker({
         position: {lat: lat, lng: lng},
         map: map,
         title: title
     });
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+    infowindows.push(infowindow);
+
+    marker.addListener('click', function() {
+        console.log(infowindows);
+        infowindows.forEach(function name(iw) {
+            if(iw) iw.close();
+        })
+        infowindow.open(map, marker);
+    });
 };
 
-TrackerGoogleMap.mark = function(point, title) {
-    return markCoordinates(point.lat, point.lng, title);
+TrackerGoogleMap.mark = function(point, title, contentString) {
+    return markCoordinates(point.lat, point.lng, title, contentString);
 };
 
 TrackerGoogleMap.createMarkedPointsFromObject = function(object)
@@ -31,7 +43,7 @@ TrackerGoogleMap.createMarkedPointsFromObject = function(object)
     var markedPoints = [];
     for(var i = 0; i < object.length; i++)
     {
-        markedPoints.push(TrackerGoogleMap.markCoordinates(object[i].lat, object[i].lng, object[i].title));
+        markedPoints.push(TrackerGoogleMap.markCoordinates(object[i].lat, object[i].lng, object[i].title, object[i].info));
     }
 
     return markedPoints;
@@ -46,7 +58,6 @@ TrackerGoogleMap.createRichPathFromObject = function(objects)
 };
 
 TrackerGoogleMap.createPathFromObject = function(points) {
-    console.log(points);
     var flightPath = new google.maps.Polyline({
         path: points,
         geodesic: true,
@@ -68,3 +79,5 @@ TrackerGoogleMap.extractLatLon = function(jsonArray) {
     });
     return result;
 };
+
+
