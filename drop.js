@@ -2,22 +2,21 @@
 const electron = require('electron');
 
 const holder = document.getElementById(TrackerGoogleMap.defaultMapName());
-const hover = document.getElementById(TrackerGoogleMap.defaultMapName() + "-hover");
-const img = document.getElementById("upload-icon");
 
 holder.ondragover = (e) => {
   e.preventDefault();
-    hover.className = "";
+    holder.className = "trans";
     return false;
 };
 
-hover.ondragleave = holder.ondragend = () => {
+holder.ondragleave = holder.ondragend = (e) => {
   e.preventDefault();
-    hover.className = "hidden";
+    holder.className = "visible";
     return false;
 };
 
-img.ondrop = hover.ondrop = holder.ondrop = (e) => {
+holder.ondrop = (e) => {
+    holder.className = "visible";
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     console.log('File you dragged is ', file.path);

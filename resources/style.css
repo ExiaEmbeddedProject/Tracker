@@ -3,6 +3,12 @@ html, body {
   margin: 0;
   padding: 0;
 }
+.trans{
+  opacity:0.4;
+}
+.visible{
+  opacity:1;
+}
 .hidden{
   display: none !important;
 }
