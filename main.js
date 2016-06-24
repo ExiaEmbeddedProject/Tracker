@@ -4,7 +4,7 @@ const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow; // GC protection
 
-global.args = process.argv;
+global.jsonPath = process.argv[1];
 
 function createWindow() {
   mainWindow = new BrowserWindow({width: 800, height: 600});

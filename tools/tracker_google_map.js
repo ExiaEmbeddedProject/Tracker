@@ -21,7 +21,7 @@ TrackerGoogleMap.markCoordinates = function(lat, lng, title, contentString) {
         title: title
     });
     var infowindow = new google.maps.InfoWindow({
-        content: contentString
+        content: '<strong>' + title + '</strong><br>' + contentString
     });
     infowindows.push(infowindow);
 
